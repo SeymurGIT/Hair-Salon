@@ -1,4 +1,5 @@
 Final Hair Salon Project
+
 🟢Bu proyekt ASP.NET Core MVC 3.1-də Code-first yanaşması ilə inkişaf etdirilmişdir
 
 ◉Onlayn şəkildə rezerv, eləcə də istədiyiniz tərz saç-saqqal kəsimindən, manikur-pedikur edilməsindən və digər xidmətlərdən istidadə edə biləcəyiniz Kişi və Qadın salonu proyekti
