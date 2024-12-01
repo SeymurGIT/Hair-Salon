@@ -1,0 +1,86 @@
+﻿
+<div class="sticky-header header-section">
+	<div class="header-left">
+		<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+		<div class="logo">
+			<a asp-controller="Dashboard" asp-action="Index">
+				<h1>Harul</h1>
+				<span>AdminPanel</span>
+			</a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<div class="header-right">
+
+			<div class="profile_details_left">
+				<ul class="nofitications-dropdown">
+					<li class="dropdown head-dpdn">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							<i class="fa fa-bell"></i><span class="badge blue">1</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<div class="notification_header">
+									<h3>Yeni bildirişləriniz var</h3>
+								</div>
+							</li>
+							<li>
+								<div class="notification_desc">
+									<a class="dropdown-item" href="">X-dan yeni bildiriş alındı</a><br />
+									<a class="dropdown-item" href="/Appointments/Index">Yeni rezerv yoxdur</a>
+								</div>
+								<div class="clearfix"></div>
+							</li>
+							<li>
+								<div class="notification_bottom">
+									<a href="/Appointments/AllAppointments">Bütün bildirişləri gör</a>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+
+			<div class="profile_details" >
+				<ul>
+					<li class="dropdown profile_details_drop">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+							<div class="profile_img" >
+								<span class="prfil-img" style="border-radius:30px;"><img src="~/User/images/1698693659921.jpeg" alt="" width="40" height="45" style="border-radius:30px;"></span>
+								<div class="user-name">
+									<p>@User.Identity.Name</p>
+									@if(User.IsInRole("SuperAdmin"))
+									{
+										<span>Super Admin</span>
+									}
+									else if (User.IsInRole("Admin"))
+									{
+										<span>Admin</span>
+									}
+								</div>
+								<i class="fa fa-angle-down lnr"></i>
+								<i class="fa fa-angle-up lnr"></i>
+								<div class="clearfix"></div>
+							</div>
+						</a>
+						<ul class="dropdown-menu drp-mnu">
+							<li><a href="change-password.html"><i class="fa fa-cog"></i>Parametrlər</a></li>
+							<li><a href="admin-profile.html"><i class="fa fa-user"></i>Profil</a></li>
+							<li>
+								<form asp-controller="Account" asp-action="Logout">
+									<button type="submit" class="btn btn-link">
+										<i class="fa fa-sign-out"></i> Çıxış
+									</button>
+								</form>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		
+	</div>
+	<div class="clearfix"></div>
+</div>

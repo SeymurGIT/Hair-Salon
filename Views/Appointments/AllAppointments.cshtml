@@ -1,0 +1,154 @@
+﻿@model List<AllAppointments>
+
+@{
+	ViewData["Title"] = "Bütün rezervlər";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+	.w-100 {
+		width: 100px;
+	}
+
+	.w-150 {
+		width: 150px;
+	}
+
+	.large-badge {
+		font-size: 14px;
+	}
+</style>
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="tables">
+			<h3 class="title1">Bütün rezervlər</h3>
+
+			<div class="table-responsive bs-example widget-shadow">
+				<h4>Rezervlər:</h4>
+				<div class="form-body">
+					<form method="get" asp-controller="Appointments" asp-action="Search">
+						<p style="font-size:16px; color:red" align="center"> </p>
+						<div class="form-group">
+							<label for="q">Rezerv nömrəsi ilə axtar</label> 
+							<input id="q" type="text" name="q" class="form-control">
+
+							<br>
+							<button type="submit" name="search" class="btn btn-primary btn-sm">Axtar</button>
+							</div>
+					</form>
+				</div>
+
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Növbə nömrəsi</th>
+							<th>Ad</th>
+							<th>Telefon nömrəsi</th>
+							<th>Email</th>
+							<th>Tarix</th>
+							<th>Vaxt</th>
+							<th>Servis</th>
+							<th>Şəkil</th>
+							<th>Status</th>
+							<th>Funksiya</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						@if (Model.Count == 0)
+						{
+							@if (Model.Count() == 0)
+							{
+								<tr>
+									<td colspan="10" class="text-center">Heç bir rezerv daxil olmayıb</td>
+								</tr>
+							}
+						}
+
+						@foreach (var item in Model)
+						{
+							<tr>
+								<th scope="row">@item.NewAppointmentId</th>
+								<td>@item.OriginalNewAppointment.QueueNumber</td>
+								<td>@($"{(item.OriginalNewAppointment != null ? item.OriginalNewAppointment.CustomerName : "")} {(item.OriginalNewAppointment != null ? item.OriginalNewAppointment.CustomerSurname : "")}")</td>
+								<td>@item.OriginalNewAppointment?.CustomerPhoneNumber</td>
+								@if (!string.IsNullOrEmpty(item.OriginalNewAppointment?.CustomerEmail))
+								{
+									<td>
+										@item.OriginalNewAppointment.CustomerEmail
+									</td>
+								}
+								else
+								{
+									<td>Yoxdur</td>
+								}
+								<td>@item.OriginalNewAppointment?.AppointmentDate.ToString("dd.MM.yyyy")</td>
+								@if (item.OriginalNewAppointment?.AppointmentTime != null)
+								{
+									<td>@item.OriginalNewAppointment.AppointmentTime.ToString("hh\\:mm")</td>
+								}
+								else
+								{
+									<td>Müəyyən edilməyib</td>
+								}
+								<td>@item.OriginalNewAppointment?.SelectedServices</td>
+								<td class="w-150">
+
+									@if (item.OriginalNewAppointment.Status == "Gözləməkdə")
+									{
+
+										<span class="badge badge-pill badge-light large-badge">
+											@item.OriginalNewAppointment.Status
+										</span>
+									}
+
+
+									@if (item.OriginalNewAppointment.Status == "Təsdiq olunmuş")
+									{
+
+										<span class="badge badge-pill badge-success large-badge">
+
+											@item.OriginalNewAppointment?.Status
+										</span>
+									}
+									@if (item.OriginalNewAppointment.Status == "İmtina olunmuş")
+									{
+										<span class="badge badge-pill badge-danger large-badge">
+											@item.OriginalNewAppointment?.Status
+										</span>
+									}
+								</td>
+								@if (!string.IsNullOrEmpty(item.OriginalNewAppointment.AppointmentImageLink))
+								{
+									<td>
+										<a asp-controller="Appointments" asp-action="DownloadImage" asp-route-imagePath="@item.OriginalNewAppointment.AppointmentImageLink">
+											Şəkli endir
+										</a>
+										<br />
+											<a href="@item.OriginalNewAppointment.AppointmentImageLink" target="_blank">
+												Şəkli görüntülə
+											</a>
+										
+									
+
+										</td>
+									}
+									else
+									{
+										<td>
+											<span class="badge badge-pill badge-pill large-badge">
+												Şəkil yoxdur
+											</span>
+										</td>
+									}
+
+								<td><a asp-action="ManageAppointments" asp-route-id="@item.OriginalNewAppointment?.Id">Idarə et</a></td>
+							</tr>
+
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

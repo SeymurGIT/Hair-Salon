@@ -1,0 +1,10 @@
+﻿@using HairSalon;
+@using HairSalon.Models;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
+@using HairSalon.ViewModel;
+@using Microsoft.AspNetCore.Identity;
+@addTagHelper HairSalon.TagHelpers.*,HairSalon
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@using Microsoft.AspNetCore.WebUtilities

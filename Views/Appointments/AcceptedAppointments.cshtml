@@ -1,0 +1,95 @@
+﻿@model List<AcceptedAppointments>
+@{
+	ViewData["Title"] = "Təsdiqlənmiş rezervlər";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+	.large-badge {
+		font-size:14px;
+	}
+</style>
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="tables">
+			<h3 class="title1">Təsdiq olunmuş rezervlər</h3>
+
+			<div class="table-responsive bs-example widget-shadow">
+				<h4>Rezervlər:</h4>
+				<table class="table table-bordered">
+					<thead> 
+						<tr>
+							<th>#</th>
+							<th>Rezerv Id</th>
+							<th>Növbə</th>
+							<th>Adı</th>
+							<th>Telefon</th>
+							<th>Servislər</th>
+							<th>Şəkil</th>
+							<th>Rezerv tarixi</th>
+							<th>Rezerv vaxtı</th>
+							<th>Təsdiqlənmə tarixi</th>
+							<th>Faktura</th>
+						</tr> 
+					</thead>
+					<tbody>
+
+						@if (Model.Count == 0)
+						{
+							@if (Model.Count() == 0)
+							{
+								<tr>
+									<td colspan="8" class="text-center">Təsdiqlənmiş bir rezerv yoxdur</td>
+								</tr>
+							}
+						}
+						@{ int count = 1;}
+						@foreach (var item in Model)
+						{
+							<tr>
+								<th scope="row">@count</th>
+								<td>@item.OriginalAppointment.Id</td>
+								<td>@item.OriginalAppointment.QueueNumber</td>
+								<td>@($"{item.OriginalAppointment.CustomerName} {item.OriginalAppointment.CustomerSurname}")</td>
+								<td>@item.OriginalAppointment.CustomerPhoneNumber</td>
+								<td>@item.OriginalAppointment.SelectedServices</td>
+								@if (!string.IsNullOrEmpty(item.OriginalAppointment.AppointmentImageLink))
+								{
+									<td>
+										<a href="@item.OriginalAppointment.AppointmentImageLink" target="_blank">
+											Şəkli görüntülə
+										</a>
+									</td>
+								}
+								else
+								{
+									<td>
+										<span class="badge badge-pill badge-pill large-badge">
+											Şəkil yoxdur
+										</span>
+									</td>
+								}
+								<td>@item.OriginalAppointment.AppointmentDate.ToString("dd.MM.yyyy")</td>
+								@if (item.OriginalAppointment.AppointmentTime != null)
+								{
+									<td>@item.OriginalAppointment.AppointmentTime.ToString("hh\\:mm")</td>
+								}
+								else
+								{
+									<td>Müəyyən edilməyib</td>
+								}
+								<td>@item.AcceptedDate</td>
+								<td>
+									<a asp-action="Invoice" asp-route-id="@item.OriginalAppointment.Id" class="btn btn-primary a-btn-slide-text">
+										<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+										<span><strong>Göstər</strong></span>
+									</a>
+							</tr>
+							count++;
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+

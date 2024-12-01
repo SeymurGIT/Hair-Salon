@@ -1,0 +1,56 @@
+﻿<div class="header">
+<div class="container">
+<div class="row">
+<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+<a asp-controller="Home" asp-action="Index"><img style="height:56px; width:144px;"src="/User/images/logo2.png" alt=""></a>
+</div>
+<div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
+<div class="navigation">
+	<div id="navigation">
+		<ul>
+			@if (User.Identity.IsAuthenticated)
+			{
+				if (User!.IsInRole("SuperAdmin") || User!.IsInRole("Admin"))
+				{
+					<li class="active"><a asp-controller="Home" asp-action="Index" title="Əsas Səhifə">Əsas Səhifə</a></li>
+					<li>
+						<a asp-controller="Service" asp-action="Index" title="Xidmətlər">Xidmətlər</a>
+					</li>
+					<li><a asp-controller="Home" asp-action="Contact" title="Bizimlə Əlaqə">Bizimlə Əlaqə</a> </li>
+					<li><a asp-controller="Booking" asp-action="Index" title="Rezerv">Rezerv</a> </li>
+
+					<li>
+						<form asp-controller="Account" asp-action="Logout">
+							<button class="btn btn-danger">Çıxış</button>
+						</form>
+					</li>
+					
+				}
+
+			else
+				{
+
+				<li class="active"><a asp-controller="Home" asp-action="Index" title="Əsas Səhifə">Əsas Səhifə</a></li>
+				<li><a asp-controller="Service" asp-action="Index" title="Xidmətlər">Xidmətlər</a></li>
+				<li><a asp-controller="Home" asp-action="Contact" title="Bizimlə Əlaqə">Bizimlə Əlaqə</a> </li>
+				<li><a asp-controller="Booking" asp-action="Index" title="Rezerv">Rezerv</a> </li>
+				<li><a asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a> </li>
+				}
+			}
+			
+			else
+			{
+				<li class="active"><a asp-controller="Home" asp-action="Index" title="Əsas Səhifə">Əsas Səhifə</a></li>
+				<li><a asp-controller="Service" asp-action="Index" title="Xidmətlər">Xidmətlər</a></li>
+				<li><a asp-controller="Home" asp-action="Contact" title="Bizimlə Əlaqə">Bizimlə Əlaqə</a> </li>
+				<li><a asp-controller="Booking" asp-action="Index" title="Rezerv">Rezerv</a> </li>
+				<li><a asp-controller="Account" asp-action="Login" title="Giriş">Daxil ol</a> </li>
+				<li><a asp-controller="Account" asp-action="Register" title="Qeydiyyat">Qeydiyyat</a></li>
+			}
+		</ul>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>

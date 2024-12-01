@@ -1,0 +1,60 @@
+﻿@model Service
+
+@{
+	ViewData["Title"] = "Xidmət əlavə et";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+	span {
+		color:red;
+		font-size:15px;
+	}
+</style>
+<div id="page-wrapper">
+			<div class="main-page">
+				<div class="forms">
+					<h3 class="title1">Servis əlavə et</h3>
+					<div class="form-grids row widget-shadow" data-example-id="basic-forms">
+						<div class="form-title">
+							<h4>Info:</h4>
+						</div>
+						<div class="form-body">
+							<form asp-action="AddServices" method="post" enctype="multipart/form-data" accept="image/*">
+								<div class="form-group">
+									<label asp-for="ServiceName">Adı</label>
+									<input asp-for="ServiceName" class="form-control" id="sername" placeholder="Servis adı" >
+									<span asp-validation-for="ServiceName"></span>
+								</div>
+
+								<div class="form-group">
+									<label asp-for="ServiceDescription">Açıqlama</label>
+									<input asp-for="ServiceDescription" class="form-control" id="des" placeholder="Servis açıqlaması" rows="5">
+									<span asp-validation-for="ServiceDescription"></span>
+								</div>
+
+								<div class="form-group">
+									<label asp-for="ServicePrice">Qiymət</label>
+									<input asp-for="ServicePrice" id="cost" class="form-control" placeholder="Servis qiyməti">
+									<span asp-validation-for="ServicePrice"></span>
+								</div>
+
+								<div class="form-group">
+									<div class="mb-3">
+										<label asp-for="Image" class="form-label">Şəkil seçin:</label>
+										<input asp-for="Image" class="form-control" type="file" id="formFile">
+				
+									</div>
+								</div>
+
+								<button type="submit" name="submit" class="btn btn-default">Əlavə et</button>
+							</form>
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+			</div>
+

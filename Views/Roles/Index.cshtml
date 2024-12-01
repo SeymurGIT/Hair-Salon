@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+	.action-buttons {
+		display: flex;
+		flex-direction: row;
+	}
+		.action-buttons a,
+		.action-buttons form {
+			font-size: initial;
+			margin-right: 10px; /* Adjust the margin as needed for spacing */
+		}
+	.role-users ul {
+		margin-left: 15px; /* Adjust the margin as needed for spacing */
+		 /* Remove the default list styling if needed */
+	}
+</style>
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="tables">
+			<h3 class="title1">Bütün Rollar</h3>
+			<div class="table-responsive bs-example widget-shadow">
+				<p style="display:inline-block; margin-right:70px;">
+					<a asp-controller="Roles" asp-action="CreateRole" class="btn btn-primary a-btn-slide-text">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						<span><strong>Rol əlavə et</strong></span>
+					</a>
+				</p>
+				<br />
+				<br />
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#Id</th>
+							<th>Rol adı</th>
+							<th style="width:250px">İstifadəçilər</th>
+							<th colspan="3" class="text-center">Funksiya</th>
+						</tr>
+
+						@if(Model.Count() == 0)
+					{
+						<tr>
+							<td colspan="4" class="text-center">Role əlavə edilməyib</td>
+						</tr>
+					}
+					</thead>
+					<tbody>
+						@foreach (var role in Model)
+						{
+							<tr>
+								<th scope="row">@role.Id</th>
+								<td>@role.Name</td>
+								<td class="role-users" asp-role-users="@role.Id"></td>
+								<td>
+									<div class="action-buttons">
+										<a asp-action="EditRole" asp-route-id="@role.Id"class="btn btn-primary a-btn-slide-text">
+											<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+											<span><strong>Düzəlt</strong></span>
+										</a>
+				
+										<form method="post" asp-controller="Roles" asp-action="DeleteRole" onsubmit="return confirm('Are you sure you want to delete this role?');">
+											<button type="submit" class="btn btn-primary a-btn-slide-text">
+												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												<span><strong>Sil</strong></span>
+											</button>
+										</form>
+										</div>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

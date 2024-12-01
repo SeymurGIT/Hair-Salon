@@ -1,0 +1,76 @@
+﻿@model List<Customer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="tables">
+			<h3 class="title1">Bütün müştərilər</h3>
+
+			<div class="table-responsive bs-example widget-shadow">
+				<h4>Müştərilər:</h4>
+				<div class="form-body">
+					<form method="get" asp-controller="Customers" asp-action="SearchCustomer">
+						<p style="font-size:16px; color:red" align="center"> </p>
+						<div class="form-group">
+							<label for="q">Müştəri adı ilə axtar</label>
+							<input id="q" type="text" name="q" class="form-control">
+
+							<br>
+							<button type="submit" name="search" class="btn btn-primary btn-sm">Axtar</button>
+						</div>
+					</form>
+				</div>
+
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Növbə nömrəsi</th>
+							<th>Ad</th>
+							<th>Soyad</th>
+							<th>Telefon nömrəsi</th>
+							<th>Email</th>
+							<th>İlk qatılma tarixi</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						@if (Model.Count == 0)
+						{
+							@if (Model.Count() == 0)
+							{
+								<tr>
+									<td colspan="7" class="text-center">Heç bir müştəri daxil olmayıb</td>
+								</tr>
+							}
+						}
+						@foreach (var item in Model)
+						{
+							<tr>
+								<th scope="row">@item.NewAppointmentId</th>
+								<td>@item.TheCustomerAppointment.QueueNumber</td>
+								<td>@($"{(item.TheCustomerAppointment.CustomerName != null ? item.TheCustomerAppointment.CustomerName : "")}")</td>
+								<td>@($"{(item.TheCustomerAppointment.CustomerSurname != null ? item.TheCustomerAppointment.CustomerSurname : "")}")</td>
+								<td>@item.TheCustomerAppointment?.CustomerPhoneNumber</td>
+								@if (!string.IsNullOrEmpty(item.TheCustomerAppointment?.CustomerEmail))
+								{
+									<td>
+										@item.TheCustomerAppointment.CustomerEmail
+									</td>
+								}
+								else
+								{
+									<td>Yoxdur</td>
+								}
+								<td>@item.FirstAppliedDate</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+

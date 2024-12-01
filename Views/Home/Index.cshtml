@@ -1,0 +1,173 @@
+﻿@model Subscriber
+@{
+	ViewData["Title"] = "Əsas Səhifə";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="hero-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<h1 class="hero-title">Onlayn Rezerv</h1>
+				<p class="hero-text"><strong>Sənin stilin və sənin rəngin. Seçimini bizimlə et </strong> </p>
+				<a asp-controller="Booking" asp-action="Index" class="btn btn-default">Rezerv Təyin Edin</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="space-medium bg-default">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+				<img style="height:570px; width:490px;" src="~/User/images/about-img.jpg" alt=""
+					 class="img-responsive">
+			</div>
+			<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+				<div class="well-block">
+					<h1>HAQQIMIZDA</h1>
+					<h5 class="small-title ">FƏRQİMİZİ HİSS EDİN</h5>
+					<p>
+						Harul Şirkətlər Qrupu 2015-ci ildə fəaliyyətə başlamışdır. Quruluşundan
+						bu yana şirkətin gətirdiyi innovasiyalar respublika üzrə nəzərəçarpan bir mövqe qazanmışdır.
+						Başlıca ideyası onlayn saç,saqqal və onların çeşidli xidmətlərini rezerv edərək əldə olunan bir rezerv nömrəsi ilə
+						istədilən zaman, istənilən vaxtda müştərilərə xidmət göstərməkdir.
+						Müştərilərimizə olan özəl diqqətimiz, onların gözləntilərini anlamaq və keyfiyyətli xidmət təmin etmək üçün çalışmaq, bizim əsas prioritetimizdir.
+						Çünki Biz, müştərilərimizə olan həssaslığımız və mühitə verdiyimiz önəm ilə tanınırıq.
+						Şirkətimizin rəhbərliyi müştərilərimiz barədə son dərəcə həssas və qayğılı olmağı spesialistlərimizdən
+						ən vacib bir tapşırıq olaraq görmələrini istəyirlər. Harul Şirkətlər Qrupu, mövcud olan saç və saqqal trendləri ilə yenilikləri bir araya gətirərək və müştərilərimizin istəklərinə diqqət yetirərək bu sektorda mövqe qazanmışdır. Bu innovativ yanaşma, Fransa mərkəzli dünyaca məşhur L'appartement şirkəti ilə əməkdaşlıq etməyimiz nəticəsində öz əksini tapmışdır.
+						Mühiti və xidmətləri canayaxın və qonaqpərvər olan
+						salonlarımızın qapısı hərkəsə açıqdır. Harul Şirkətlər Qrupu daim xidmətə hazırdır.
+						Bizimlə qalın, gələcək sizdə olsun!
+					</p>
+					<a href="https://www.linkedin.com/in/seymur-zeynalli-593b23266/" class="btn btn-primary">Bizi izləyin</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="space-medium">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
+				<div class="section-title mb40 text-center">
+					<!-- section title start-->
+					<h1>Ən son xəbərlər &amp;Məqalələr</h1>
+				</div>
+				<!-- /.section title start-->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="post-block">
+					<div class="row ">
+						<!-- post block -->
+						<div class="col-md-6">
+							<div class="post-img">
+								<a href="#"><img src="~/User/images/post-img.jpg" alt="" class="img-responsive"></a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="post-content">
+								<h2>
+									<p class="title">
+										Bərbər Salonu Bütün Dünyada Böyüyür
+									</p>
+								</h2>
+								<p class="meta">
+									<span class="meta-date">9 dekabr 2023</span> <span class="meta-comment"><a href="# ">(12)Rəy</a></span> <span class="meta-author">By <a href="#">Seymur Zeynallı</a></span>
+								</p>
+								<p>
+									Bu sahəyə nəzər yetirin. Gələcəkdə partlayış edəcək
+								</p>
+								<a href="https://adamgroomingatelier.com/journal/more-than-a-haircut-the-barbers-role-in-modern-life" class="btn btn-default">Daha Çox Oxu</a>
+							</div>
+						</div>
+					</div>
+					<!-- /.post block -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<!-- footer-->
+	<div class="container">
+		<div class="footer-block">
+			<!-- footer block -->
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+					<div class="footer-widget">
+						<h2 class="widget-title">Ünvanımız</h2>
+						<ul class="listnone contact">
+							<li><i class="fa fa-map-marker"></i> Suraxani ray. Ehmed Mehbaliyev, 92 94 küç </li>
+							<li><i class="fa fa-phone"></i> +994 50-770-09-53</li>
+							<li><i class="fa fa-fax"></i> +427 43-08</li>
+							<li><i class="fa fa-envelope-o"></i>harul.salon@info.com</li>
+						</ul>
+
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="footer-widget footer-social">
+						<!-- social block -->
+						<h2 class="widget-title">Sosial Media</h2>
+						<ul class="listnone">
+							<li>
+								<a href="https://www.facebook.com/SeymurZeynalli18"> <i class="fa fa-facebook"></i> Facebook </a>
+							</li>
+							<li><a href="https://twitter.com/Seymur187"><i class="fa fa-twitter"></i> Twitter</a></li>
+							<li>
+								<a href="https://www.youtube.com/channel/UC27OaqO-sizDB1xrni7zjKA">
+									<i class="fa fa-youtube"></i>Youtube
+								</a>
+							</li>
+							<li><a href="#"><i class="fa fa-google-plus"></i> Google Plus</a></li>
+							<li><a href="https://www.linkedin.com/in/seymur-zeynalli-593b23266/"><i class="fa fa-linkedin"></i> Linked In</a></li>
+						</ul>
+					</div>
+					<!-- /.social block -->
+				</div>
+				<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+					<div class="footer-widget widget-newsletter">
+						<!-- newsletter block -->
+						<h2 class="widget-title">Geri dönüş</h2>
+						<p>
+							Elektron poçtunuzu aşağıdakı qutuda qeyd edərək xidmət listimiz və qiymətlərimiz, o cümlədən digər
+							faydalı yenilik
+							lərdən yararlana bilərsiniz.
+						</p>
+
+						<form method="post" asp-controller="Subscription" asp-action="Subscribe">
+							@*<input type="hidden" asp-for="Id"*@ />
+							<div class="input-group">
+								<input asp-for="EmailAddress" class="form-control" placeholder="Email adresinizi daxil edin">
+								<span asp-validation-for="EmailAddress"></span>
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="submit" value="submit" name="sub">Abunə ol</button>
+								</span>
+							</div>
+						</form>
+
+					</div>
+					<!-- newsletter block -->
+				</div>
+			</div>
+			<div class="tiny-footer">
+				<!-- tiny footer block -->
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="copyright-content">
+							<p>©Harul Kişi Salonu 2023</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.tiny footer block -->
+		</div>
+		<!-- /.footer block -->
+	</div>
+</div>
+
+
+
+

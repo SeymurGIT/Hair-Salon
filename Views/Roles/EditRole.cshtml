@@ -1,0 +1,84 @@
+﻿@model IdentityRole
+@{
+	ViewData["Title"] = "Rol düzəlişi et";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="forms">
+			<h3 class="title1">Rol və istifadəçi məlumatlarını düzəlt</h3>
+			<div class="form-grids row widget-shadow" data-example-id="basic-forms">
+				<div class="form-title">
+					<h4>Info:</h4>
+				</div>
+				<div class="form-body">
+					<form asp-action="EditRole" method="post">
+						<div asp-validation-summary="All" class="text-danger"></div>
+						<input name="Id" type="hidden" value="@Model.Id" />
+						<div class="form-group">
+							<label asp-for="Name">Ad</label>
+							<input asp-for="Name" class="form-control" id="sername" placeholder="Adı">
+						</div>
+
+						<button type="submit" name="submit" class="btn btn-default">Düzəlt</button>
+					</form>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="tables">
+			<div class="table-responsive bs-example widget-shadow">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#Id</th>
+							<th>Adı</th>
+							<th>Email</th>
+							<th colspan="3" class="text-center">Funksiya</th>
+
+						</tr>
+						@if(ViewBag.Users!=null)
+					{
+						@if (ViewBag.Users.Count == 0)
+						{
+							<tr>
+								<td colspan="4" class="text-center">Role əlavə edilməyib</td>
+							</tr>
+						}
+
+					}
+					</thead>
+					<tbody>
+						@foreach (var user in ViewBag.Users)
+						{
+							<tr>
+								<th scope="row">@user.Id</th>
+								<td>@user.FullName</td>
+								<td>@user.Email</td>
+								<td>
+									<div class="action-buttons">
+
+										<div class="action-buttons">
+											<a asp-controller="Admin" asp-action="EditUser" asp-route-id="@user.Id" class="btn btn-primary a-btn-slide-text">
+												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+												<span><strong>Düzəlt</strong></span>
+											</a>
+										</div>
+										</div>
+									</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+<!--footer.html
+</div>
+<!-- Classie -->

@@ -1,0 +1,96 @@
+﻿@model ReportsViewModel 
+@{
+    ViewData["Title"] = "GetReports";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+	.w-100 {
+		width: 100px;
+	}
+
+	.w-150 {
+		width: 150px;
+	}
+
+	.large-badge {
+		font-size: 14px;
+	}
+</style>
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="tables">
+			<h3 class="title1">Sorğu icra olundu</h3>
+
+
+
+			<div class="table-responsive bs-example widget-shadow">
+				<h4>Seçilən tarixlər arasındaki hesabat</h4>
+
+				<h5 align="center" style="color:red">Bu tarixdən: @Model.FromDate.ToShortDateString()</h5>
+				<br />
+				<h5 align="center" style="color:blue">Bu tarixə: @Model.ToDate.ToShortDateString()</h5>
+
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Rezerv ID</th>
+							<th>Müştəri Adı</th>
+							<th>Rezerv Tarixi</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						@if (Model.Appointments != null && Model.Appointments.Any())
+						{
+
+						@foreach (var appointment in Model.Appointments)
+						{
+						<tr>
+							<th scope="row">@appointment.Id</th>
+							<td>@($"{appointment.CustomerName} {appointment.CustomerSurName}")</td>
+							<td>@appointment.AppointmentDate.ToString("MM/dd/yyyy")</td>
+							<td class="w-150">
+
+								@if (appointment.Status == "Gözləməkdə")
+								{
+
+									<span class="badge badge-pill badge-light large-badge">
+										@appointment.Status
+									</span>
+								}
+
+
+								@if (appointment.Status == "Təsdiq olunmuş")
+								{
+
+									<span class="badge badge-pill badge-success large-badge">
+
+										@appointment.Status
+									</span>
+								}
+								@if (appointment.Status == "İmtina olunmuş")
+								{
+									<span class="badge badge-pill badge-danger large-badge">
+										@appointment.Status
+										</span>
+								}
+							</td>
+							<td><a href="">View</a></td>
+
+						</tr>
+							}
+						}
+						
+						else
+			{
+					<tr>
+						<td colspan="5" style="text-align:center">Bu tarixlər arasında heç bir rezerv tapılmadı</td>
+					</tr>
+			}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+

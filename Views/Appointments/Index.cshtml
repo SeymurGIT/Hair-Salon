@@ -1,0 +1,156 @@
+﻿@using Microsoft.AspNetCore.WebUtilities
+@model List<NewAppointment>
+@{
+	ViewData["Title"] = "Yeni rezervlər";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+	.w-100 {
+		width: 100px;
+	}
+
+	.w-150 {
+		width: 150px;
+	}
+
+	.large-badge {
+		font-size: 14px;
+	}
+</style>
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="tables">
+			<h3 class="title1">Yeni rezervlər</h3>
+
+			<div class="table-responsive bs-example widget-shadow">
+				<h4>Rezervlər:</h4>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Növbə nömrəsi</th>
+							<th>Ad</th>
+							<th>Telefon nömrəsi</th>
+							<th>Şəkil</th>
+							<th>Tarix</th>
+							<th>Vaxt</th>
+							<th>Servis</th>
+							<th>Status</th>
+							<th>Funksiya</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						@if (Model.Count == 0)
+						{
+							@if (Model.Count() == 0)
+							{
+								<tr>
+									<td colspan="10" class="text-center">Yeni bir rezerv daxil olmayıb</td>
+								</tr>
+							}
+						}
+						@{int count = 1; }
+						@foreach (var item in Model)
+						{
+							<tr>
+								<th scope="row">@count</th>
+								<td>@item.QueueNumber</td>
+								<td class="w-150">@($"{item.CustomerName} {item.CustomerSurname}")</td>
+								<td>@item.CustomerPhoneNumber</td>
+
+								@if (!string.IsNullOrEmpty(item.AppointmentImageLink))
+								{
+									<td>
+											<a href="@item.AppointmentImageLink" target="_blank">
+												Şəkli görüntülə
+											</a>
+										<br />
+										<a asp-controller="Appointments" asp-action="DownloadImage" asp-route-imagePath="@item.AppointmentImageLink">
+											Şəkli endir
+										</a>
+
+										</td>
+									}
+									else
+									{
+										<td>
+											<span class="badge badge-pill badge-info large-badge">
+												Şəkil yoxdur
+											</span>
+										</td>
+									}
+								<td>@item.AppointmentDate.ToString("dd.MM.yyyy")</td>
+
+								@if (item.AppointmentTime != null)
+								{
+									<td>@item.AppointmentTime.ToString("hh\\:mm")</td>
+								}
+								else
+								{
+									<td>Müəyyən edilməyib</td>
+								}
+								<td class="w-150">@item.SelectedServices</td>
+								<td>
+
+									@if (item.Status == "Gözləməkdə")
+									{
+
+										<span class="badge badge-pill badge-light large-badge">
+											@item.Status
+										</span>
+									}
+									@if (item.Status == "Təsdiq olunmuş")
+									{
+
+										<span class="badge badge-pill badge-success large-badge">
+											@item.Status
+										</span>
+									}
+									else if (item.Status == "İmtina olunmuş")
+									{
+										<span class="badge badge-pill badge-danger large-badge">
+											@item.Status
+										</span>
+									}
+								</td>
+								<td><a asp-action="ManageAppointments" asp-route-id="@item.Id">Idarə et</a></td>
+							</tr>
+							count++;
+						}
+					</tbody>
+				</table>
+				<!-- Bootstrap Modal -->
+				<div class="modal fade" id="imageViewModal" tabindex="-1" role="dialog" aria-labelledby="imageViewModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="imageViewModalLabel">Şəkil izlənimi</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<img src="" id="imagePreview" class="img-fluid" alt="Şəkil izlənimi">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- JavaScript for Modal -->
+				<script>
+					$(document).ready(function () {
+						$('a[data-target="#imageViewModal"]').on('click', function () {
+							var imageSrc = $(this).data('image-src');
+							$('#imagePreview').attr('src', imageSrc);
+						});
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+

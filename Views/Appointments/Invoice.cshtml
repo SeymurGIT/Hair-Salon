@@ -1,0 +1,112 @@
+﻿@model AcceptedAppointmentViewModel 
+@{
+	ViewData["Title"] = "Faktura";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+   @@media print {
+            body * {
+				visibility:hidden;
+            }
+            .print-icon {
+                display: none;
+            }
+        .main-page,
+        .main-page * {
+            visibility: visible;
+        }
+
+        .main-page {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+            @@page {
+                margin: 0;
+            }
+
+            body::after {
+                content: none !important;
+            }
+        }
+</style>
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="tables" id="exampl">
+			<h3 class="title1">Faktura detalları</h3>
+
+			<div class="table-responsive bs-example widget-shadow">
+				<h4>Faktura#</h4>
+				<table class="table table-bordered" width="100%" border="1">
+					<tr>
+						<th style="text-align:center;" colspan="6">Müştəri məlumatları</th>
+					</tr>
+
+					<tr>
+						<th>Adı</th>
+						<td>@Model.AcceptedAppointmentObj.CustomerName</td>
+						<th>Əlaqə nömrəsi</th>
+						<td>@Model.AcceptedAppointmentObj.CustomerPhoneNumber</td>
+						<th>Email</th>
+						<td>@Model.AcceptedAppointmentObj.CustomerEmail</td>
+					</tr>
+					<tr>
+						<th>Rezerv nömrəsi</th>
+						<td>@Model.AcceptedAppointmentObj.QueueNumber</td>
+						<th>Faktura tarixi</th>
+						<td colspan="3">@Model.AcceptedAppointmentObj.AppointmentDate</td>
+					</tr>
+
+				</table>
+
+				<table class="table table-bordered" width="100%" border="1">
+					<tr>
+						<th style="text-align:center;" colspan="3">Servis detalları</th>
+					</tr>
+
+
+
+					<tr>
+						<th>#</th>
+						<th>Servis</th>
+						<th>Qiyməti</th>
+					</tr>
+
+					@{var count = 1;}
+					@foreach (var serviceName in Model.AcceptedAppointmentObj.SelectedServices.Split(','))
+					{
+
+						<tr>
+							<th>@count</th>
+							<td>@serviceName</td>
+							<td>
+								@if (Model.ServicePrices.ContainsKey(serviceName))
+								{
+									<text>@Model.ServicePrices[serviceName]</text>
+								}
+								else
+								{
+									<text>N/A</text>
+								}
+							</td>
+						</tr>
+						count++;
+					}
+
+					<tr>
+						<th colspan="2" style="text-align:center">Grand Total</th>
+						<th></th>
+
+					</tr>
+
+				</table>
+				<p style="margin-top: 1%;" align="center">
+					<!-- Give a class to the icon for easier targeting -->
+					<i class="fa fa-print fa-2x print-icon" style="cursor: pointer;" onclick="window.print()"></i>
+				</p>
+
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,67 @@
+﻿@model CreateUserViewModel
+@{
+	ViewData["Title"] = "İstifadəçi əlavə et";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+		<div id="page-wrapper">
+			<div class="main-page">
+				<div class="forms">
+					<h3 class="title1">İstifadəçi əlavə edin</h3>
+					<div class="form-grids row widget-shadow" data-example-id="basic-forms">
+						<div class="form-title">
+							<h4>Info:</h4>
+						</div>
+						<div class="form-body">
+							<form asp-action="CreateUser" method="post" novalidate enctype="multipart/form-data">
+								<div asp-validation-summary="All" class="text-danger"></div>
+
+								<div class="form-group">
+									<label asp-for="UserName">İstifadəçi adı</label>
+									<input asp-for="UserName" class="form-control" id="sername" placeholder="İstifadəçi adı">
+								</div>
+
+								<div class="form-group">
+									<label asp-for="FullName">Ad</label>
+									<input asp-for="FullName" class="form-control" id="sername" placeholder="Adı">
+								</div>
+
+								<div class="form-group">
+									<label asp-for="Email">Email</label>
+									<input asp-for="Email" class="form-control" id="des" placeholder="Email ünvanı" rows="5">
+								</div>
+
+								<div class="form-group">
+									<label asp-for="Password">Şifrə</label>
+									<input asp-for="Password" class="form-control" placeholder="Şifrə">
+								</div>
+
+								<div class="form-group">
+									<div class="mb-3">
+										<label asp-for="ConfirmPassword" class="form-label">Şifrəni təkrarlayın</label>
+										<input asp-for="ConfirmPassword" class="form-control" placeholder="Şifrəni təkrarla">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="mb-3">
+										<label asp-for="Image" class="form-label">Şəkil seçin:</label>
+										<input asp-for="Image" class="form-control" type="file" id="formFile">
+
+									</div>
+								</div>
+
+								<button type="submit" name="submit" class="btn btn-default">Əlavə et</button>
+							</form>
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+<!--footer.html
+</div>
+<!-- Classie -->

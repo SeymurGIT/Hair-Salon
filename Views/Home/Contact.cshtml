@@ -1,0 +1,123 @@
+﻿@model Contact
+@{
+	ViewData["Title"] = "Contact";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .social-circle a {
+        display: inline-block;
+        margin: 0 10px; /* Adjust spacing as needed */
+        font-size: 24px; /* Adjust the font size to make the icons larger */
+        color: #000; /* Change the color if needed */
+    }
+</style>
+<div class="page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="page-caption">
+					<h2 class="page-title">Bizimlə Əlaqə</h2>
+					<div class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li><a asp-controller="Home" asp-action="Index">Əsas Səhifə</a></li>
+							<li class="active">Bizimlə Əlaqə</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+	<div class="alert alert-success" style="font-size:20px; text-align:center" role="alert">
+		@ViewBag.SuccessMessage
+	</div>
+}
+<div class="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+				<div class="widget widget-contact">
+					  
+					<h3 class="widget-title">Əlaqə Vasitələri</h3>
+					<address>
+						<strong>Bakı şəhəri</strong>
+						<br>Suraxanı Rayonu 133K
+						<br>Qaraçuxur Qəsəbəsi, 78A
+						<br>
+						<abbr title="Phone">Tel:</abbr>(012)427-43-08
+					</address>
+					<address>
+						<strong>Əlaqə poçt ünvanı </strong>
+						<br>
+						<a href="mailto:harulmen@info.com">harulmen@info.com</a>
+					</address>
+				</div>
+				 
+				<div class="widget widget-social">
+					<div class="social-circle">
+						<a href="https://www.facebook.com/SeymurZeynalli18" class="#"><i class="fa fa-facebook"></i></a>
+						<a href="https://www.linkedin.com/in/seymur-zeynalli-593b23266/" class="#"><i class="fa fa-linkedin"></i></a>
+						<a href="https://twitter.com/Seymur187" class="#"><i class="fa fa-twitter"></i></a>
+						<a href="https://www.youtube.com/channel/UC27OaqO-sizDB1xrni7zjKA" class="#"><i class="fa fa-youtube-play"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<h1>ƏLAQƏ FORMU</h1>
+						<p>
+							Zəhmət olmasa aşağıdakı formanı doldurun.Sizə mümkün qədər tez cavab vermək üçün əlimizdən gələni edəcəyik.
+						</p>
+						<form method="post" asp-controller="Home" asp-action="Contact">
+							<div class="row">
+								<div class="col-md-6">
+									<label asp-for="Name" class="control-label" >Ad</label>
+									<input asp-for="Name" id="name" placeholder="Adınız" class="form-control">
+									<span asp-validation-for="Name"></span>
+								</div>
+
+								<div class="col-md-6">
+									<label asp-for="PhoneNumber" class="control-label" >Telefon (boş buraxıla bilər)</label>
+									<input asp-for="PhoneNumber" id="name" placeholder="Telefon nömrəniz" class="form-control">
+									
+								</div>
+
+								<div class="col-md-6">
+									<label asp-for="Email" class="control-label">Email ünvanı</label>
+									<input asp-for="Email" id="email" placeholder="Email ünvanınız" class="form-control">
+									<span asp-validation-for="Email"></span>
+								</div>
+								<div class="col-md-6">
+									<label asp-for="Subject" class="control-label">Mövzu (boş buraxıla bilər)</label>
+									<input asp-for="Subject" id="Subject" placeholder="Mesajınızın mövzusu"
+										   class="form-control">
+
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label asp-for="Message" class="control-label">Mesaj</label>
+										<textarea class="form-control" asp-for="Message" id="textarea" rows="6"
+												  placeholder="Mesajınız"></textarea>
+										<span asp-validation-for="Message"></span>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<button id="singlebutton" name="singlebutton" class="btn btn-default">
+											Göndər
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

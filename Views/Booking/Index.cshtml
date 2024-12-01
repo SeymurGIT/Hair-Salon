@@ -1,0 +1,102 @@
+﻿@model NewAppointment
+@{
+	ViewData["Title"] = "Rezerv Formu";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+	.checkbox-size {
+		font-size:30px;
+	}
+</style>
+<div class="page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="page-caption">
+					<h2 class="page-title">Rezerv Təyin Edin</h2>
+					<div class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li><a asp-controller="Home" asp-action="Index">Əsas Səhifə</a></li>
+							<li class="active">Rezerv</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<h1>Rezerv Formu</h1>
+						<h5> Vaxtınıza qənaət etmək və hərkəsdən öncə olmaq üçün cəld olun.</h5>
+						<form asp-controller="Booking" asp-action="Appoint" method="post" enctype="multipart/form-data" accept="image/*">
+							<div asp-validation-summary="All"></div>
+							<div class="row">
+								<div class="col-md-6">
+									<label class="control-label" asp-for="CustomerName">Ad</label>
+									<input asp-for="CustomerName" class="form-control" id="name" placeholder="Ad">
+								</div>
+								<div class="col-md-6">
+									<label class="control-label" asp-for="CustomerSurname">Soyad</label>
+									<input asp-for="CustomerSurname" class="form-control" id="name" placeholder="Soyad">
+								</div>
+								<div class="col-md-6">
+									<label class="control-label" asp-for="CustomerPhoneNumber">Telefon</label>
+									<input asp-for="CustomerPhoneNumber" class="form-control" id="phone" placeholder="Telefon nömrəsi" pattern="[0-9]+">
+								</div>
+
+								<div class="col-md-6">
+									<label class="control-label" asp-for="HairStyle">Şəkil:</label>
+									<input asp-for="HairStyle" style="width:250px" type="file" class="form-control" id="customFile">
+
+								</div>
+								<div class="col-md-6">
+									<label class="control-label" asp-for="CustomerEmail">Email</label>
+									<input asp-for="CustomerEmail" class="form-control" id="appointment_email" placeholder="Email üvanı">
+								</div>
+								<div class="col-md-6">
+									<label class="control-label">Xidmətlər:</label>
+
+									@foreach (var service in ViewBag.AllServices)
+									{
+										bool isChecked = service == ViewBag.SelectedServiceName; // Check if the service matches the selected service name
+										<div>
+											<label>
+												<input class="checkbox-size" type="checkbox" name="selectedServices" value="@service" @(isChecked ? "checked" : "") />
+												@service
+											</label>
+										</div>
+									}
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label class="control-label" asp-for="AppointmentDate">Rezerv Tarixi</label>
+										<input type="date" asp-for="AppointmentDate" class="form-control appointment_date" placeholder="Tarix" id='adate'>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group">
+										<label class="control-label" asp-for="AppointmentTime">Rezerv Vaxtı</label>
+										<input type="time" asp-for="AppointmentTime" class="form-control appointment_time" placeholder="Vaxt" id='atime'>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<button type="submit" id="submit" name="submit" class="btn btn-default">Təsdiq</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@await Html.PartialAsync("_footer")
+

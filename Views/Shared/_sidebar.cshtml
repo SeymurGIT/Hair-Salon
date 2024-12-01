@@ -1,0 +1,79 @@
+﻿<div class="sidebar" role="navigation">
+	<div class="navbar-collapse">
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+			<ul class="nav" id="leftCol" style="margin-top:7% ;">
+				<li>
+					<a asp-action="Index" asp-controller="Dashboard"><i class="fa fa-home nav_icon"></i>Idarəetmə paneli</a>
+				</li>
+				<li>
+					<a asp-controller="Services" asp-action="ManageServices"><i class="fa fa-cogs nav_icon"></i>Servislər<span class="fa arrow"></span> </a>
+					<ul class="nav nav-second-level collapse">
+						<li>
+							<a asp-controller="Services" asp-action="AddServices">Xidmət əlavə et</a>
+						</li>
+
+					</ul>
+					<!-- /nav-second-level -->
+				</li>
+
+
+				<li>
+					<a asp-controller="Appointments" asp-action="Index"><i class="fa fa-check-square-o nav_icon"></i>Rezervlər<span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li>
+							<a asp-controller="Appointments" asp-action="Index">Yeni rezervlər</a>
+						</li>
+						<li>
+							<a asp-controller="Appointments" asp-action="AcceptedAppointments">Təsdiq edilmiş rezervlər</a>
+						</li>
+
+						<li>
+							<a asp-controller="Appointments" asp-action="AllAppointments">Bütün rezervlər</a>
+						</li>
+					</ul>
+					<!-- //nav-second-level -->
+					
+				<li>
+					<a asp-action="Index" asp-controller="Admin" class="chart-nav"><i class="fa fa-user nav_icon"></i>İstifadəçilər</a>
+				</li>
+
+				<li>
+					<a asp-controller="Roles" asp-action="Index" class="chart-nav"><i class="fa fa-user nav_icon"></i>Rollar</a>
+				</li>
+				<li>
+					<a asp-controller="Customers" asp-action="Index" class="chart-nav"><i class="fa fa-users nav_icon"></i>Daimi müştərilər</a>
+				</li>
+
+				<li>
+					<a asp-controller="Reports" asp-action="Index" class="chart-nav"><i class="fa fa-file-text-o nav_icon"></i>T/A Hesabat</a>
+				</li>
+				<li>
+					<a href="/Admin/pages/sales-reports.html" class="chart-nav"><i class="fa fa-file-text-o nav_icon"></i>Ay hesabatı</a>
+				</li>
+				<li>
+					<a href="/Admin/pages/invoices.html" class="chart-nav"><i class="fa fa-file-text-o nav_icon"></i>Fakturalar</a>
+				</li>
+
+				<li>
+					<a href="/Admin/pages/search-invoices.html" class="chart-nav"><i class="fa fa-search nav_icon"></i>Faktura axtar</a>
+				</li>
+
+				<!--<li class="">
+					<a href="/Admin/pages/about-us.html"><i class="fa fa-book nav_icon"></i>Səhifələr<span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li>
+							<a href="/Admin/pages/about-us.html">Haqqımızda</a>
+						</li>
+						<li>
+							<a href="/Admin/pages/contact-us.html">Bizimlə əlaqə</a>
+						</li>
+					</ul>-->
+					<!-- /nav-second-level -->
+					
+
+			</ul>
+			<div class="clearfix"> </div>
+			<!-- //sidebar-collapse -->
+		</nav>
+	</div>
+</div>

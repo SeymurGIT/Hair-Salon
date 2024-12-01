@@ -1,0 +1,44 @@
+﻿@model NewAppointment 
+@{
+	ViewData["Title"] = "Növbə nömrəsi";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="page-caption">
+					<h2 class="page-title">Təşəkkür Edirik!</h2>
+					<div class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li><a asp-controller="Home" asp-action="Index">Əsas səhifə</a></li>
+							<li class="active">Təşəkkür Edirik!</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="content">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="post-block post-quote">
+					<div class="row ">
+						<!-- post block -->
+						<div class="col-md-12">
+							<div class="quote-content">
+								<blockquote>“Bizi seçdiyiniz üçün təşəkkürlər.Rezerv nömrəniz : @ViewBag.QueueNumber
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+

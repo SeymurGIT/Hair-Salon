@@ -1,0 +1,31 @@
+﻿@model RoleViewModel
+@{
+	ViewData["Title"] = "Rol yaratma";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="forms">
+			<h3 class="title1">Rol əlavə et</h3>
+			<div class="form-grids row widget-shadow" data-example-id="basic-forms">
+				<div class="form-title">
+					<h4>Info:</h4>
+				</div>
+				<div class="form-body">
+					<form asp-action="CreateRole" method="post">
+						@Html.AntiForgeryToken()
+						<div asp-validation-summary="All" class="text-danger"></div>
+						<div class="form-group">
+							<label asp-for="@Model.RoleName">Rol Adı</label>
+							<input asp-for="@Model.RoleName" class="form-control" id="sername" placeholder="Adı" value="">
+							<span asp-validation-for="@Model.RoleName" class="text-danger"></span>
+						</div>
+						<button type="submit" name="submit" class="btn btn-default">Yarat</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

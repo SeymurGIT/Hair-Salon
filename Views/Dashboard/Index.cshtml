@@ -1,0 +1,136 @@
+﻿
+@{
+	ViewData["Title"] = "Dashboard";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+	var totalCountsViewModel = ViewData["TotalCountsViewModel"] as TotalCountsViewModel;
+}
+
+		<!-- main content start-->
+		<div id="page-wrapper" class="row calender widget-shadow">
+			<div class="main-page">
+				<div class="row calender widget-shadow">
+					<div class="row-one">
+						<div class="col-md-4 widget">
+
+							<div class="stats-left ">
+								<h5>Ümumi</h5>
+								<h4>Servislər</h4>
+							</div>
+							<div class="stats-right">
+								<label>@totalCountsViewModel.TotalServices</label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="col-md-4 widget states-mdl">
+
+							<div class="stats-left">
+								<h5>Ümumi</h5>
+								<h4>Rezervlər</h4>
+							</div>
+							<div class="stats-right">
+								<label>@totalCountsViewModel.TotalAppointments</label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="col-md-4 widget states-last">
+
+							<div class="stats-left">
+								<h5>Ümumi</h5>
+								<h4>Təsdiqlənmiş</h4>
+							</div>
+							<div class="stats-right">
+								<label>@totalCountsViewModel.TotalAcceptedAppointments</label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+
+				</div>
+
+				<div class="row calender widget-shadow">
+					<div class="row-one">
+						<div class="col-md-4 widget">
+
+							<div class="stats-left ">
+								<h5>Ümumi</h5>
+								<h4>Imtina rezerv</h4>
+							</div>
+							<div class="stats-right">
+								<label>@totalCountsViewModel.TotalRejectedAppointments</label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="col-md-4 widget states-mdl">
+
+							<div class="stats-left">
+								<h5>Daimi</h5>
+								<h4>Müştərilər</h4>
+							</div>
+							<div class="stats-right">
+								<label> 0</label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="col-md-4 widget states-last">
+
+							<div class="stats-left">
+								<h5>Bügün</h5>
+								<h4>Rezerlər</h4>
+							</div>
+							<div class="stats-right">
+								<label>@totalCountsViewModel.TodaysAppointments</label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+
+				</div>
+
+				<div class="row calender widget-shadow">
+					<div class="row-one">
+						<div class="col-md-4 widget">
+
+							<div class="stats-left ">
+								<h5>Dünənin</h5>
+								<h4>Rezervlər</h4>
+							</div>
+							<div class="stats-right">
+								<label>
+									@totalCountsViewModel.YesterdaysAppointments
+								</label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="col-md-4 widget states-mdl">
+
+							<div class="stats-left">
+								<h5>Son 7 Gün</h5>
+								<h4>Rezervləri</h4>
+							</div>
+							<div class="stats-right">
+								<label>
+									@totalCountsViewModel.WeeksAppointments
+								</label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="col-md-4 widget states-last">
+							<div class="stats-left">
+								<h5>Ümumi</h5>
+								<h4>Abunəçilər</h4>
+							</div>
+							<div class="stats-right">
+								<label>@totalCountsViewModel.TotalSubscribers</label>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+

@@ -1,0 +1,67 @@
+﻿@model ServicesViewModel
+
+@{
+	ViewData["Title"] = "Servis düzəlişi";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="forms">
+			<h3 class="title1"></h3>
+			<h3 class="title1">Servis məlumatlarını yenilə</h3>
+			<div class="form-grids row widget-shadow" data-example-id="basic-forms">
+				<div class="form-title">
+					<h4>Info:</h4>
+				</div>
+				<div class="form-body">
+					<form method="post" asp-controller="Services" asp-action="EditServices" enctype="multipart/form-data">
+
+						<div class="form-group">
+							<label>Adı</label>
+							<input asp-for="@Model.ServiceObj.ServiceName" class="form-control" id="sername" placeholder="Servis adı">
+							<span asp-validation-for="@Model.ServiceObj.ServiceName" style="color:red;"></span>
+						</div>
+
+						<div class="form-group">
+							<label>Açıqlama</label>
+							<input asp-for="@Model.ServiceObj.ServiceDescription" class="form-control" id="des" placeholder="Servis açıqlaması" rows="5">
+							<span asp-validation-for="@Model.ServiceObj.ServiceDescription" style="color:red;"></span>
+						</div>
+
+						<div class="form-group">
+							<label>Qiymət</label>
+							<input asp-for="@Model.ServiceObj.ServicePrice" id="cost" class="form-control" placeholder="Servis qiyməti">
+							<span asp-validation-for="ServiceObj.ServicePrice" style="color:red;"></span>
+						</div>
+
+						<div class="form-group">
+							<label class="form-label">Hazırkı şəkil:</label>
+							@if (!string.IsNullOrEmpty(Model.ServiceObj.ServiceImageLink))
+							{
+								<img src="@Model.ServiceObj.ServiceImageLink" alt="Service Image" style="max-width: 200px; margin-bottom: 10px;" />
+							}
+							else
+							{
+								<p style="display:inline;">Şəkil yoxdur</p>
+							}
+
+							<div class="mb-3">
+								<label class="form-label">Şəkli dəyiş</label>
+								<input asp-for="@Model.ServiceObj.Image" class="form-control" type="file" id="formFile">
+								<span asp-validation-for="@Model.ServiceObj.Image" style="color: red;"></span>
+							</div>
+						</div>
+						<button type="submit" name="submit" class="btn btn-default">Düzəlişi tamamla</button>
+					</form>
+
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+

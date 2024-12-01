@@ -1,0 +1,83 @@
+﻿@model List<Service>
+@{
+		ViewData["Title"] = "ManageServices";
+		Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div id="page-wrapper">
+	<div class="main-page">
+		<div class="tables">
+			<h3 class="title1">Bütün Servislər</h3>
+			<div class="table-responsive bs-example widget-shadow">
+				<h4 style="display:inline-block;">Servislər:</h4>
+				<p style="display:inline-block; margin-left:10px;">
+					<a asp-controller="Services" asp-action="AddServices"  class="btn btn-primary a-btn-slide-text">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						<span><strong>Servis əlavə et</strong></span>
+					</a>
+				</p>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>#Id</th>
+							<th>Şəkil</th>
+							<th>Adı</th>
+							<th>Açıqlaması</th>
+							<th>Qiyməti</th>
+							<th colspan="3" style="text-align:center;" text-align:center>İdarə et</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						@if (Model.Count() == 0)
+						{
+							<tr>
+								<td colspan="6" class="text-center">Servis əlavə edilməyib</td>
+							</tr>
+						}
+
+						@{ int count = 1;}
+						@foreach (var item in Model)
+						{
+							<tr>
+								<th scope="row">@count</th>
+								<td>
+									@if (!string.IsNullOrEmpty(item.ServiceImageLink))
+									{
+										<img style="width:250px;height:200px" src="@item.ServiceImageLink" />
+
+									}
+									else
+									{
+										<span>Şəkil yoxdur</span>
+									}
+								</td>
+								<td>@item.ServiceName</td>
+								<td>@item.ServiceDescription</td>
+								<td>@item.ServicePrice</td>
+								<td>
+									<a asp-controller="Services" asp-action="EditServices" asp-route-id="@item.ServiceId" class="btn btn-primary a-btn-slide-text">
+										<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+										<span><strong>Düzəlt</strong></span>
+									</a>
+
+								</td>
+								<td>
+									<form method="post" asp-controller="Services" asp-action="DeleteService" asp-route-id="@item.ServiceId" onsubmit="return confirm('Are you sure you want to delete this service?');">
+										<button type="submit" class="btn btn-primary a-btn-slide-text">
+											<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+											<span><strong>Sil</strong></span>
+										</button>
+									</form>
+
+								</td>
+
+							</tr>
+							count++;
+						}
+					</tbody>
+				</table>
+			</div>
+			</div>
+		</div>
+	</div>
+

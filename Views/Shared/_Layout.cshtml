@@ -1,0 +1,61 @@
+﻿<div class="alert-section">
+	@if (TempData["success"] != null)
+	{
+		<div class="alert alert-success text-center" style="font-size: 18px;" id="successAlert">
+			@TempData["success"]
+		</div>
+	}
+	else if (TempData["failed"] != null)
+	{
+		<div class="alert alert-danger text-center" style="font-size: 18px;" id="failedAlert">
+			@TempData["failed"]
+		</div>
+	}
+</div>
+<!DOCTYPE html>
+<html lang="az">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>@ViewData["Title"]</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7cMontserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link href="~/User/css/bootstrap.min.css" rel="stylesheet">
+	<link href="~/User/css/font-awesome.min.css" rel="stylesheet">
+	<link href="~/User/css/style.css" rel="stylesheet">
+	<style>
+		p, address, li, strong {
+			font-size: 15px;
+		}
+	</style>
+</head>
+<body>
+	@await Html.PartialAsync("_navbar")
+	<div>
+		@RenderBody()
+	</div>
+
+
+	<script src="~/User/js/jquery.min.js"></script>
+	<script src="~/User/js/bootstrap.min.js"></script>
+	<script src="~/User/js/menumaker.js"></script>
+	<script src="~/User/js/jquery.sticky.js"></script>
+	<script src="~/User/js/sticky-header.js"></script>
+	<script>
+		$(document).ready(function () {
+			var duration = 5000;
+			setTimeout(function () {
+				$("#successAlert").fadeOut("slow");
+			}, duration);
+		});
+	</script>
+	<script>
+		$(document).ready(function () {
+			var duration = 3000;
+			setTimeout(function () {
+				$("#failedAlert").fadeOut("slow");
+			}, duration);
+		});
+	</script>
+</body>
+</html>
