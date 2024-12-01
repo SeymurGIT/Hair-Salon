@@ -12,6 +12,7 @@ obj/
 #Ignore Config files
 .config/
 
+
 # Ignore Git temporary files
 .git/
 
