@@ -1,0 +1,24 @@
+# .NET Core
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Mac OS
+.DS_Store
+
+# Windows Installer files
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# Ignore appsettings.json if it contains sensitive data
+appsettings.json
+
+# Ignore environment-specific appsettings files
+appsettings.Development.json
+appsettings.Production.json
