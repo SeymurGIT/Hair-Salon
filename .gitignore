@@ -6,6 +6,15 @@ obj/
 *.userosscache
 *.sln.docstates
 
+# Ignore Visual Studio temporary files
+.vs/
+
+#Ignore Config files
+.config/
+
+# Ignore Git temporary files
+.git/
+
 # Mac OS
 .DS_Store
 
